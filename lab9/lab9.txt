@@ -1,9 +1,9 @@
 QUESTION 1.  Read through the program lab9.bin. What do you expect the program to do? More specifically, which register will the program modify when it is run, and what will it contain when the program finishes? (You can probably figure this out merely by reading the comments provided in lab9.bin.)
 
-ANSWER: 
+ANSWER: It will first clear R2, and and a decimal 12 to it, thus, a decimal 12 will be stored in register R2, as 0000 0000 0000 1100 or x000C in hex.
 
 
 QUESTION 2.  Explain in a few sentences why the ability to step through a program (run one instruction at a time) is a very useful tool for debugging a program. Debugging is the process of finding and correcting bugs (or errors) in a program. Hint: Finding a bug is often much more difficult than correcting it.
 
-ANSWER: 
+ANSWER: Since it basically is the normal printing mechanism we use in the more advanced IDEs. It allows us to track the change of variables and see which line is malfunctioning.
 
