@@ -7,3 +7,6 @@ Question 2: For each label in the code (with all bugs fixed), write down the cor
 
 
 Question 3: Between using labels and explicit memory locations/offsets, which one makes the most sense, and why?
+
+
+
