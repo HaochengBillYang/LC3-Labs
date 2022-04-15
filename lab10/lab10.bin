@@ -2,7 +2,22 @@
 ; Make sure to comment your code properly and don't exceed 
 ; the line limitation for this assignment.  Good luck!
 
-0011 0001 0000 0000 ; x3100 - starting address of the program
-
-; The program description and code starts here
-
+0011 0001 0000 0000 ; x3100  starting address of the program
+0101 0110 1110 0000 ; R3 = R3 AND 00000 initializes register R3 to 0, PC = x3101
+0101 1001 0010 0000 ; R4 = R4 AND 00000 initializes register R4 to 0, PC = x3102
+0101 1011 0110 0000 ; R5 = R5 AND 00000 initializes register R5 to 0, PC = x3103
+1110 0110 0010 1110 ; set R3's value to x3132, PC = x3104, PCoff = x002E = 0 0010 1110
+0101 0000 0010 0000 ; R0 = R0 AND 00000 initializes register R0 to 0, PC = x3105
+0001 1001 0010 1010 ; ADD R4 = R4 + 10, R4 = 10 now, PC = x3106
+0110 0000 1100 0000 ; LDR from Address stored in R3 to R0, PC = x3107
+0000 0010 0000 0100 ; BR check if R0 is positive, True: PC = x310C, else: PC= x3108
+0001 0110 1110 0001 ; Inrement pointer R3, PC = x3109
+0001 1001 0011 1111 ; Decrement counter R4, PC = x310A
+0000 1000 0000 0110 ; BR check if R4 reached negative, if so, PC = x3111 which is HALT, PC = x310B
+0000 0111 1111 1010 ; BR check if R4 is zero or positive, if so, PC = x3106, PC = x310C
+0001 1010 0000 0101 ; Add R1 value to R5, PC = x310D
+0001 0110 1110 0001 ; Inrement pointer R3, PC = x310E
+0001 1001 0011 1111 ; Decrement counter R4, PC = x310F
+0000 1000 0000 0001 ; BR check if R4 reached negative, if so, PC = x3111 which is HALT, PC = x3110
+0000 0111 1111 0101 ; BR check if R4 is zero or positive, if so, PC = x3106, PC = x3111
+1111 0000 0010 0101 ; HALT the program, PC = x3112
