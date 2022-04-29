@@ -2,7 +2,46 @@
 ; character, the table uses 16 memory locations, each of which contains
 ; 8 bits (the high 8 bits, for your convenience) marking pixels in the
 ; line for that character.
-
+; This is programmed strictly following notes provided on Canvas.
+; LAB12_FlowChart_lecture.pdf
+; R1: RFF
+; R2: RASC
+; R3: COUNTER. LATER RFD
+; R4: ROW COUNTER
+; R5: COL COUNTER
+; R6: Loads value of Rsr
+; R0: OUT register
+			.ORIG x3000
+			LD		R1, FONT_FILE	; R1 contains starting of Font_File
+			LDR		R2, R1, #2		; R2 contains the Rasc
+			ADD		R3, R3, #3		; R3 is now counter for multiplication by 2^4
+DOUBLE		ADD		R2, R2, R2		; R2 is multiplied by 2
+			ADD		R3, R3, #-1		; R3 -= 1
+			BRzp	DOUBLE			; Double value until R3 is negative
+			LEA		R3, FONT_DATA	; R3 now contains the address of FONT_DATA
+			ADD		R2, R2, R3		; Starting Row Address loaded into R2
+			ADD		R4, R4, #8		; Set R3 as the row counter
+			ADD		R4, R4, #8		; Set R3 as the row counter
+ROWLOOP		ADD		R5, R5, #8		; Set R4 as the col counter
+			LDR		R6, R2, #0		; Load value of Rsr into R6
+COLLOOP		BRn		PRINT1			; Self Explanatory
+			LDR		R0, R1, #0		; Load R0 with character for 0
+			TRAP x21				; PRINT 0
+			BRnzp	SKIP_PRINT1		;
+PRINT1		LDR		R0, R1, #1		; Load R1 with character for 1
+			TRAP x21				; PRINT 1	
+SKIP_PRINT1	ADD		R5, R5, #-1		; Column counter derements 1
+			BRz 	PRINT_NEWLN		; Print New line if column counter is 0
+			ADD		R6, R6, R6		; Left Shift Rsr_c
+			BRnzp	COLLOOP			; Go back to start of COLLOOP
+PRINT_NEWLN	AND		R0, R0, #0		; Clear R0
+			ADD 	R0, R0, #10		; Load R0 with x0A to print
+			TRAP x21				; Print x0A
+			ADD		R2, R2, #1		; Rsr += 1
+			ADD		R4, R4, #-1		; Rrc -= 1
+			BRp		ROWLOOP			; Go back to ROWLOOP if still > 0
+			TRAP x25
+FONT_FILE	.FILL	x5000			; Address of FONT_FILE
 FONT_DATA
 	.FILL	x0000
 	.FILL	x0000
@@ -4100,3 +4139,5 @@ FONT_DATA
 	.FILL	x0000
 	.FILL	x0000
 	.FILL	x0000
+
+.END
