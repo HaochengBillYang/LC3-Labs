@@ -2,6 +2,65 @@
 ; character, the table uses 16 memory locations, each of which contains
 ; 8 bits (the high 8 bits, for your convenience) marking pixels in the
 ; line for that character.
+; Changed from LAB12 due to not understanding but following flowchart
+; R0: TRAP x21 (OUT) resgister, what to be printed
+; Raddr_________R1: Character finder, increments once col counter reaches 0 Raddr
+; Rascii________R2: Contents of R1
+; Row Counter___R3: Row Count
+; Col Counter___R4: Col Count
+; Temp__________R5: TEMP, CLEAR BEFORE USE
+; Rows Printed__R6: ROW PRINTED
+
+			.ORIG x3000
+			ADD R3, R3, #15			;
+			ADD R3, R3, #1			; Initialized Row counter as 16
+			LD  R1, TWO				; R1 starts from x5002
+			ADD R6, R6, #0			; NUMBER OF ROWS PRINTED IS 0 INITIALLY
+			
+STARTROW	LDR R2, R1, #0			; R2 gets vaue in R1
+			ADD R2, R2, R2			; 
+			ADD R2, R2, R2			;
+			ADD R2, R2, R2			;
+			ADD R2, R2, R2			; R2*16
+			BRz DONEROW				; IF FONT_DATA IS ZERO THEN GO TO DONEROW
+			LEA R5, FONT_DATA		; LOADS ADDRESS OF FONT_DATA INTO R5
+			ADD R2, R2, R5			; R2 = R2 + FONT_DATA
+			ADD R2, R2, R6			; R2 = R2 + FONT_DATA + ROW NUMBERS PRINTED
+			AND R5, R5, #0			; CLEARS TEMP RESGISTER
+									; PRINT MECHENISM IS BELOW ----------------
+			ADD R4, R4, #8			; SETS COL COUNTER TO 8
+			LDR R5, R2, #0			; R5 IS NOW CONTENT OF R2, AFTER .FILL THE INSTRUCTION TO PRINT THE LINE
+PRINTWHAT	BRzp PRINT0				; If its positive it starts with a zero
+			LD  R0, ONE				; 
+			LDR R0, R0, #0			;
+			TRAP x21				; Prints 1
+			ADD R0, R0, #0			;
+			BRnzp COLDOWN			; Jumps to coldown if printed 1
+PRINT0		LD  R0, ZERO			;
+			LDR R0, R0, #0			;
+			TRAP x21				; Prints 0
+			ADD R0, R0, #0			;
+COLDOWN		ADD R4, R4, #-1			; decrements col counter
+			BRz NEXTCHAR			; GOES TO NEXT CHAR IF COL REACHES ZERO
+			ADD R5, R5, R5			; LEFT SHIFTS CONTENT OF R2
+			BRnzp PRINTWHAT
+NEXTCHAR	ADD R1, R1, #1			; INCREMENTS R1
+			BRnzp STARTROW			; GOES BACK TO STARTROW
+DONEROW		LD  R0, NEWLINE			; 
+			TRAP x21				; Prints /n
+			AND R1, R1, #0			; CLEARS R1
+			LD  R1, TWO				; RESETS R1 TO x5002
+			ADD R6, R6, #1			; INCREMENTS ROWS PRINTED BY 1
+			ADD R3, R3, #-1			; DECREMENTS ROW COUNTER
+			BRz THEEND
+			BRnzp STARTROW
+THEEND		TRAP x25
+		
+NEWLINE		.FILL   x0A		
+FONT_FILE	.FILL	x5000
+ZERO		.FILL	x5000
+ONE			.FILL 	x5001
+TWO			.FILL	x5002
 
 FONT_DATA
 	.FILL	x0000
@@ -4100,3 +4159,4 @@ FONT_DATA
 	.FILL	x0000
 	.FILL	x0000
 	.FILL	x0000
+.END
