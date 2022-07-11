@@ -1,0 +1,13 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	DOUBLE            3003
+//	ROWLOOP           300A
+//	COLLOOP           300C
+//	PRINT1            3010
+//	SKIP_PRINT1       3012
+//	PRINT_NEWLN       3016
+//	FONT_FILE         301D
+//	FONT_DATA         301E
+

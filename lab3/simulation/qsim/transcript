@@ -1,0 +1,42 @@
+# do lab3.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 01:09:48 on Feb 11,2022
+# vlog -work work lab3.vo 
+# -- Compiling module lab3
+# 
+# Top level modules:
+# 	lab3
+# End time: 01:09:48 on Feb 11,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 01:09:48 on Feb 11,2022
+# vlog -work work Waveform.vwf.vt 
+# -- Compiling module lab3_vlg_sample_tst
+# -- Compiling module lab3_vlg_check_tst
+# -- Compiling module lab3_vlg_vec_tst
+# 
+# Top level modules:
+# 	lab3_vlg_vec_tst
+# End time: 01:09:48 on Feb 11,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -c -do "lab3.do" 
+# Start time: 01:09:48 on Feb 11,2022
+# //  ModelSim ALTERA 10.3d Oct  7 2014 Linux 3.10.0-1160.49.1.el7.x86_64
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading work.lab3_vlg_vec_tst
+# Loading work.lab3
+# Loading work.lab3_vlg_sample_tst
+# Loading work.lab3_vlg_check_tst
+# Simulation passed !
+# ** Note: $finish    : Waveform.vwf.vt(151)
+#    Time: 40 ns  Iteration: 0  Instance: /lab3_vlg_vec_tst/tb_out
+# End time: 01:09:49 on Feb 11,2022, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

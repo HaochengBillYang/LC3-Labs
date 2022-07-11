@@ -1,0 +1,41 @@
+# do fulladder.do
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 01:26:50 on Feb 11,2022
+# vlog -work work fulladder.vo 
+# -- Compiling module fulladder
+# 
+# Top level modules:
+# 	fulladder
+# End time: 01:26:50 on Feb 11,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim ALTERA vlog 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 01:26:50 on Feb 11,2022
+# vlog -work work Waveform.vwf.vt 
+# -- Compiling module fulladder_vlg_sample_tst
+# -- Compiling module fulladder_vlg_check_tst
+# -- Compiling module fulladder_vlg_vec_tst
+# 
+# Top level modules:
+# 	fulladder_vlg_vec_tst
+# End time: 01:26:50 on Feb 11,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -c -do "fulladder.do" 
+# Start time: 01:26:50 on Feb 11,2022
+# //  ModelSim ALTERA 10.3d Oct  7 2014 Linux 3.10.0-1160.49.1.el7.x86_64
+# //
+# //  Copyright 1991-2014 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading work.fulladder_vlg_vec_tst
+# Loading work.fulladder
+# Loading work.fulladder_vlg_sample_tst
+# Loading work.fulladder_vlg_check_tst
+# Simulation passed !
+# ** Note: $finish    : Waveform.vwf.vt(180)
+#    Time: 80 ns  Iteration: 0  Instance: /fulladder_vlg_vec_tst/tb_out
+# End time: 01:26:50 on Feb 11,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

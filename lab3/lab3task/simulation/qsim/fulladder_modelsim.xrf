@@ -1,0 +1,11 @@
+vendor_name = ModelSim
+source_file = 1, /home/hy38/ece120/lab3/lab3task/fulladder.bdf
+source_file = 1, /home/hy38/ece120/lab3/lab3task/Waveform.vwf
+source_file = 1, /home/hy38/ece120/lab3/lab3task/db/fulladder.cbx.xml
+design_name = fulladder
+instance = comp, \S~output , S~output, fulladder, 1
+instance = comp, \Cout~output , Cout~output, fulladder, 1
+instance = comp, \Cin~input , Cin~input, fulladder, 1
+instance = comp, \b~input , b~input, fulladder, 1
+instance = comp, \a~input , a~input, fulladder, 1
+instance = comp, \~QUARTUS_CREATED_GND~I , ~QUARTUS_CREATED_GND~I, fulladder, 1

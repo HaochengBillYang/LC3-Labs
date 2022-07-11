@@ -1,0 +1,18 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	STARTROW          3004
+//	PRINTWHAT         3010
+//	PRINT0            3016
+//	COLDOWN           301A
+//	NEXTCHAR          301E
+//	DONEROW           3020
+//	THEEND            3028
+//	NEWLINE           3029
+//	FONT_FILE         302A
+//	ZERO              302B
+//	ONE               302C
+//	TWO               302D
+//	FONT_DATA         302E
+
